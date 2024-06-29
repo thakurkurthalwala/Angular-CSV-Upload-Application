@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-toolbar color="primary">
+      <span>Upload Result</span>
+    </mat-toolbar>
+    <div class="result-container">
+      <p style="color: green;">Correct Rows: {{ correctRows }}</p>
+      <p style="color: red;">Incorrect Rows: {{ incorrectRows }}</p>
+      <p style="color: red;">Total Errors: {{ totalerrors }}</p>
+      <button mat-raised-button color="primary" (click)="onUploadAnother()">Upload Another File</button>
+    </div>
+  </mat-card>
+  

@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>Upload CSV File</span>
+  </mat-toolbar>
+  <div class="upload-container">
+    <label for="file-input" class="file-input-label">
+      Choose File
+      <input id="file-input" type="file" (change)="onFileSelected($event)">
+    </label>
+    <button mat-raised-button color="primary" (click)="onUpload()">Upload</button><br>
+    <button mat-raised-button color="accent" *ngIf="selectedFile" (click)="onPreview()">Preview</button>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div><br><br>
+    <div *ngIf="selectedFile" class="file-name">Selected File: {{ selectedFile.name }}</div>
+  </div>
+</mat-card>
