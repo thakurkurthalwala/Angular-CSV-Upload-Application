@@ -10,7 +10,7 @@ export class PreviewComponent implements OnInit {
   data: any[] = [];
   errors: any[] = [];
   constructor(private router: Router) {}
-  ngOnInit(): void {
+  ngOnInit(): void {debugger;
     const storedData = localStorage.getItem('csvData');
     const storedErrors = localStorage.getItem('csvErrors');
 

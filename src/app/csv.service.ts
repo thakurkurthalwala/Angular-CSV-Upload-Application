@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as Papa from 'papaparse';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -10,7 +11,9 @@ export class CsvService {
   data: any[] = [];
   errors: any[] = [];
 
-  constructor() {}
+  constructor(    
+    private toastr:ToastrService
+  ) {}
 
   uploadFile(file: File): Observable<void> {
     return new Observable((observer) => {
@@ -22,6 +25,7 @@ export class CsvService {
           localStorage.setItem('csvErrors', JSON.stringify(this.errors));
           if (this.errors.length > 0) {
             observer.error('Validation errors found');
+            this.toastr.error('Validation errors found. Please Preview a CSV file weather it correct.!', '');
           } else {
             observer.next();
           }
@@ -39,14 +43,14 @@ export class CsvService {
       Object.keys(row).forEach((col) => {
         if (!row[col]) {
           errors.push({ row: rowIndex + 1, column: col, error: 'Empty value' });
-        } else {
+        } else {debugger;
           switch (col) {
             case 'Email':
               if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(row[col])) {
                 errors.push({ row: rowIndex + 1, column: col, error: 'Invalid email' });
               }
               break;
-            case 'Phone number':
+            case 'Phone':
               if (!/^\d{10}$/.test(row[col])) {
                 errors.push({ row: rowIndex + 1, column: col, error: 'Invalid phone number' });
               }
