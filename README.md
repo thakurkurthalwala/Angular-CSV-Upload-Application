@@ -1,5 +1,3 @@
-# Angular-CSV-Upload-Application
-Project Title
 # Angular CSV Upload Application
 
 # Description
