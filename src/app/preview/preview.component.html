@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>CSV Data Preview</span>
+  </mat-toolbar>
+  <div class="preview-container">
+    <h3>Data:</h3>
+    <table mat-table [dataSource]="data" class="mat-elevation-z8">
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="PhoneNumber">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element['Phone number']}} </td>
+      </ng-container>
+      <ng-container matColumnDef="City">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+      </ng-container>
+      <ng-container matColumnDef="GPA">
+        <th mat-header-cell *matHeaderCellDef> GPA </th>
+        <td mat-cell *matCellDef="let element"> {{element.GPA}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['Name', 'Email', 'PhoneNumber', 'City', 'Address', 'GPA']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['Name', 'Email', 'PhoneNumber', 'City', 'Address', 'GPA'];"></tr>
+    </table>
+    <button mat-raised-button color="primary" (click)="onResult()">View Result</button><br><br><span></span>
+    <h3>Errors:</h3>
+    <div *ngIf="errors.length === 0">No errors found.</div>
+    <ul *ngIf="errors.length > 0">
+      <li *ngFor="let error of errors">
+        Row {{error.row}}, Column {{error.column}}: {{error.error}}
+      </li>
+    </ul>
+  </div>
+</mat-card>
