@@ -15,7 +15,7 @@ export class CsvService {
     private toastr:ToastrService
   ) {}
 
-  uploadFile(file: File): Observable<void> {
+  uploadFile(file: File): Observable<void> {debugger;
     return new Observable((observer) => {
       Papa.parse(file, {
         complete: (result) => {
@@ -23,14 +23,14 @@ export class CsvService {
           this.errors = this.validateData(this.data);
           localStorage.setItem('csvData', JSON.stringify(this.data));
           localStorage.setItem('csvErrors', JSON.stringify(this.errors));
-          if (this.errors.length > 0) {
+          if (this.errors.length === 1) {
             observer.error('Validation errors found in row');
-            this.toastr.error('Validation errors found. Please Preview a CSV file weather it correct.!', '');
+            this.toastr.error('Validation errors found. Please Preview a CSV file whether it is correct!', '');
           }
           else if (this.errors.length > 1) {
             observer.error('Validation errors found in rows');
-            this.toastr.error('Validation errors found. Please Preview a CSV file weather it correct.!', '');
-          }
+            this.toastr.error('Validation errors found. Please Preview a CSV file whether it is correct!', '');
+          }          
           else {
             observer.next();
           }
@@ -48,7 +48,7 @@ export class CsvService {
       Object.keys(row).forEach((col) => {
         if (!row[col]) {
           errors.push({ row: rowIndex + 1, column: col, error: 'Empty value' });
-        } else {debugger;
+        } else {
           switch (col) {
             case 'Email':
               if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(row[col])) {
