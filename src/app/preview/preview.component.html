@@ -35,7 +35,7 @@
     </table>
     <button mat-raised-button color="primary" (click)="onResult()">View Result</button><br><br><span></span>
     <h3>Errors:</h3>
-    <div *ngIf="errors.length === 0">No errors found.</div>
+    <div style="color: green;" *ngIf="errors.length === 0">No errors found.</div>
     <ul *ngIf="errors.length > 0">
       <li *ngFor="let error of errors">
         Row {{error.row}}, Column {{error.column}}: {{error.error}}

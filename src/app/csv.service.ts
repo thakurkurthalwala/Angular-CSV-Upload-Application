@@ -24,9 +24,14 @@ export class CsvService {
           localStorage.setItem('csvData', JSON.stringify(this.data));
           localStorage.setItem('csvErrors', JSON.stringify(this.errors));
           if (this.errors.length > 0) {
-            observer.error('Validation errors found');
+            observer.error('Validation errors found in row');
             this.toastr.error('Validation errors found. Please Preview a CSV file weather it correct.!', '');
-          } else {
+          }
+          else if (this.errors.length > 1) {
+            observer.error('Validation errors found in rows');
+            this.toastr.error('Validation errors found. Please Preview a CSV file weather it correct.!', '');
+          }
+          else {
             observer.next();
           }
           observer.complete();

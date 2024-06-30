@@ -7,9 +7,15 @@
       Choose File
       <input id="file-input" type="file" (change)="onFileSelected($event)">
     </label>
+    <label *ngIf="!selectedFile"><b>Please Choose a CSV File Format.</b></label><br><span></span>
     <button mat-raised-button color="primary" (click)="onUpload()">Upload</button><br>
     <button mat-raised-button color="accent" *ngIf="selectedFile" (click)="onPreview()">Preview</button>
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div><br><br>
     <div *ngIf="selectedFile" class="file-name">Selected File: {{ selectedFile.name }}</div>
   </div>
+  <mat-card-footer>
+    <div class="footer-content" style="text-align: center;">
+      <span>Made with <mat-icon class="heart-icon">favorite</mat-icon> by Rohit</span>
+    </div>
+  </mat-card-footer>
 </mat-card>

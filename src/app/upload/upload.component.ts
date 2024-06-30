@@ -26,7 +26,7 @@ export class UploadComponent {
       const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
       if (fileExtension !== 'csv') {
-        this.toastr.warning('Invalid file format. Please upload a CSV file.', '', 
+        this.toastr.warning(fileExtension?.toUpperCase() +' Format not Accepted. Please upload a CSV file.', '', 
           { timeOut: 5000 });
         return;
       }
