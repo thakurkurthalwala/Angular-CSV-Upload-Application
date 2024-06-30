@@ -8,6 +8,7 @@
     <p style="color: red;">Total Errors: {{ totalerrors }}</p>
     <button mat-raised-button color="primary" (click)="onUploadAnother()">Upload Another File</button>
     
+    <!-- Motorcycle speedometer SVG -->
     <div class="speedometer-container">
       <svg height="200" width="200">
         <!-- Background circle -->
@@ -16,8 +17,8 @@
         <!-- Meter circle -->
         <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="lightgrey" />
         
-        <!-- Needle -->
-        <line id="needle" x1="100" y1="100" [attr.x2]="needleEndX" [attr.y2]="needleEndY" style="stroke:black;stroke-width:2" />
+        <!-- Needle with animation -->
+        <line id="needle" x1="100" y1="100" [attr.x2]="needleEndX" [attr.y2]="needleEndY" style="stroke:black;stroke-width:2" [@needleAnimation]="needleAnimationState" />
       </svg>
     </div>
   </div>

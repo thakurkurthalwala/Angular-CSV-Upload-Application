@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CsvService } from '../csv.service';
 import { Router } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.scss']
+  styleUrls: ['./result.component.scss'],
+  animations: [
+    trigger('needleAnimation', [
+      state('void', style({ transform: 'rotate(0deg)' })),
+      transition('* => *', animate('1s ease-out'))
+    ])
+  ]
 })
 export class ResultComponent implements OnInit {
   correctRows: number = 0;
@@ -13,6 +20,7 @@ export class ResultComponent implements OnInit {
   totalerrors: number =0;
   needleEndX: number = 0;
   needleEndY: number= 0;
+  needleAnimationState: string = '';
 
   constructor(private csvService: CsvService, private router: Router) {}
 
@@ -25,13 +33,16 @@ export class ResultComponent implements OnInit {
     this.updateNeedlePosition();
   }
 
-  updateNeedlePosition(): void {
+ updateNeedlePosition(): void {
     const correctnessPercentage = this.calculateCorrectness();
-    const angle = (correctnessPercentage / 100) * 180; // Calculate angle (0-180 degrees)
+    const angle = (correctnessPercentage / 100) * 360; // Calculate angle (0-180 degrees)
 
     // Calculate needle end coordinates
-    this.needleEndX = 100 + 70 * Math.sin(angle * Math.PI / 180); // 70 is the radius for needle length
-    this.needleEndY = 100 - 70 * Math.cos(angle * Math.PI / 180);
+    this.needleEndX = 100 + 70 * Math.sin(angle * Math.PI / 360); // 70 is the radius for needle length
+    this.needleEndY = 100 - 70 * Math.cos(angle * Math.PI / 360);
+
+    // Trigger animation by changing state
+    this.needleAnimationState = this.needleAnimationState === '' ? 'animate' : '';
   }
   calculateCorrectness(): number {
     if (this.correctRows === 0 && this.incorrectRows === 0) {
