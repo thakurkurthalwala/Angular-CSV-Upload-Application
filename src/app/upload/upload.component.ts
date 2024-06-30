@@ -19,7 +19,7 @@ export class UploadComponent {
     private toastr:ToastrService
   ) {}
 
-  onFileSelected(event: Event): void {
+  onFileSelected(event: Event): void {debugger;
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
@@ -32,6 +32,7 @@ export class UploadComponent {
       }
 
       this.selectedFile = file;
+      localStorage.setItem('csvName', JSON.stringify(this.selectedFile.name));
       this.errorMessage = null; // Clear any previous error messages
     }
   }

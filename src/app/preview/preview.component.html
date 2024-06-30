@@ -35,7 +35,7 @@
     </table>
     <button mat-raised-button color="primary" (click)="onResult()">View Result</button><br><br><span></span>
     <mat-progress-bar mode="determinate" color="primary" [value]="calculateCorrectness()" *ngIf="data && data.length > 0"></mat-progress-bar>
-    <h3>Errors:</h3>
+    <h3>Errors in {{fileName}}:</h3>
     <div style="color: green;" *ngIf="errors.length === 0">No errors found.</div>
     <ul *ngIf="errors.length > 0">
       <li *ngFor="let error of errors">
@@ -43,4 +43,9 @@
       </li>
     </ul>
   </div>
+  <mat-card-footer>
+    <div class="footer-content" style="text-align: center;">
+      <span>Made with <mat-icon class="heart-icon">favorite</mat-icon> by Rohit</span>
+    </div>
+  </mat-card-footer>
 </mat-card>

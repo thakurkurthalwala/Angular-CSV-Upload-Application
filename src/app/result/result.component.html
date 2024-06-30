@@ -1,6 +1,6 @@
 <mat-card>
   <mat-toolbar color="primary">
-    <span>Upload Result</span>
+    <span>Upload Result For {{fileName}}</span>
   </mat-toolbar>
   <div class="result-container">
     <p style="color: green;">Correct Rows: {{ correctRows }}</p>
@@ -22,4 +22,9 @@
       </svg>
     </div>
   </div>
+  <mat-card-footer>
+    <div class="footer-content" style="text-align: center;">
+      <span>Made with <mat-icon class="heart-icon">favorite</mat-icon> by Rohit</span>
+    </div>
+  </mat-card-footer>
 </mat-card>

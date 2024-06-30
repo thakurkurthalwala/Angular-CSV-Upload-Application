@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 export class PreviewComponent implements OnInit {
   data: any[] = [];
   errors: any[] = [];
+  fileName: string='';
   constructor(private router: Router) {}
   ngOnInit(): void {
     const storedData = localStorage.getItem('csvData');
     const storedErrors = localStorage.getItem('csvErrors');
+    const fileName = localStorage.getItem('csvName');
 
     if (storedData) {
       this.data = JSON.parse(storedData);
@@ -20,6 +22,9 @@ export class PreviewComponent implements OnInit {
 
     if (storedErrors) {
       this.errors = JSON.parse(storedErrors);
+    }
+    if(fileName){debugger;
+      this.fileName = JSON.parse(fileName);
     }
   }
   onResult(): void {

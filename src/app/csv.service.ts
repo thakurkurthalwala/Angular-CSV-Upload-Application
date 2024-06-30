@@ -73,7 +73,6 @@ export class CsvService {
     });
     return errors;
   }
-
   getData(): any[] {
     return this.data;
   }

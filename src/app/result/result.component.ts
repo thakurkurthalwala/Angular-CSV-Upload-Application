@@ -21,16 +21,21 @@ export class ResultComponent implements OnInit {
   needleEndX: number = 0;
   needleEndY: number= 0;
   needleAnimationState: string = '';
+  fileName: string='';
 
   constructor(private csvService: CsvService, private router: Router) {}
 
   ngOnInit(): void {
     const data = this.csvService.getData();
     const errors = this.csvService.getErrors();
+    const fileName = localStorage.getItem('csvName');
     this.correctRows = data.filter((_, index) => this.csvService.isRowValid(index)).length;
     this.incorrectRows = data.length - this.correctRows;
     this.totalerrors = errors.length;
     this.updateNeedlePosition();
+    if(fileName){
+      this.fileName = JSON.parse(fileName);
+    }
   }
 
  updateNeedlePosition(): void {
