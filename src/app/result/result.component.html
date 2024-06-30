@@ -1,12 +1,24 @@
 <mat-card>
-    <mat-toolbar color="primary">
-      <span>Upload Result</span>
-    </mat-toolbar>
-    <div class="result-container">
-      <p style="color: green;">Correct Rows: {{ correctRows }}</p>
-      <p style="color: red;">Incorrect Rows: {{ incorrectRows }}</p>
-      <p style="color: red;">Total Errors: {{ totalerrors }}</p>
-      <button mat-raised-button color="primary" (click)="onUploadAnother()">Upload Another File</button>
+  <mat-toolbar color="primary">
+    <span>Upload Result</span>
+  </mat-toolbar>
+  <div class="result-container">
+    <p style="color: green;">Correct Rows: {{ correctRows }}</p>
+    <p style="color: red;">Incorrect Rows: {{ incorrectRows }}</p>
+    <p style="color: red;">Total Errors: {{ totalerrors }}</p>
+    <button mat-raised-button color="primary" (click)="onUploadAnother()">Upload Another File</button>
+    
+    <div class="speedometer-container">
+      <svg height="200" width="200">
+        <!-- Background circle -->
+        <circle cx="100" cy="100" r="90" stroke="black" stroke-width="2" fill="white" />
+        
+        <!-- Meter circle -->
+        <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="lightgrey" />
+        
+        <!-- Needle -->
+        <line id="needle" x1="100" y1="100" [attr.x2]="needleEndX" [attr.y2]="needleEndY" style="stroke:black;stroke-width:2" />
+      </svg>
     </div>
-  </mat-card>
-  
+  </div>
+</mat-card>

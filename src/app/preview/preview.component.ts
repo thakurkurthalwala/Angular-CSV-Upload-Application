@@ -28,4 +28,18 @@ export class PreviewComponent implements OnInit {
       this.router.navigate(['/result']);
     }
   }
+  calculateCorrectness(): number {
+    // Replace with your logic to calculate correctness (e.g., percentage)
+    if (this.data.length === 0) {
+      return 0; // No data, progress bar should show 0%
+    }
+
+    // Example: Calculate based on errors count or data validation status
+    const totalRows = this.data.length;
+    const errorCount = this.errors.length;
+
+    const correctnessPercentage = ((totalRows - errorCount) / totalRows) * 100;
+    
+    return Math.round(correctnessPercentage);
+  }
 }

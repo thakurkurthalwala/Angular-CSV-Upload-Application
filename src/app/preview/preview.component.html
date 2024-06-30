@@ -34,6 +34,7 @@
       <tr mat-row *matRowDef="let row; columns: ['Name', 'Email', 'PhoneNumber', 'City', 'Address', 'GPA'];"></tr>
     </table>
     <button mat-raised-button color="primary" (click)="onResult()">View Result</button><br><br><span></span>
+    <mat-progress-bar mode="determinate" color="primary" [value]="calculateCorrectness()" *ngIf="data && data.length > 0"></mat-progress-bar>
     <h3>Errors:</h3>
     <div style="color: green;" *ngIf="errors.length === 0">No errors found.</div>
     <ul *ngIf="errors.length > 0">

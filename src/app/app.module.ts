@@ -13,6 +13,8 @@ import { UploadComponent } from './upload/upload.component';
 import { PreviewComponent } from './preview/preview.component';
 import { ResultComponent } from './result/result.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatCardModule,
     MatToolbarModule,
     AppRoutingModule,
+    MatProgressBarModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

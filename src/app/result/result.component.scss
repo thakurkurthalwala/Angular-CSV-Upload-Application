@@ -12,3 +12,15 @@
   .result-container button {
     margin-top: 20px;
   }  
+  .speedometer-container {
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    margin: 20px auto; /* Center the container */
+  }
+  
+  #needle {
+    transform-origin: 100px 100px; /* Set rotation origin */
+    transition: transform 0.5s ease-in-out; /* Smooth needle transition */
+  }
+  
+  
